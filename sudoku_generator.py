@@ -6,7 +6,7 @@ from copy import deepcopy
 import random
 from sudoku_solver import SudokuSolver
 
-class Sudoku_Generator:
+class SudokuGenerator:
 
     def __init__(self, chars: list, difficulty: int):
         self.possible_chars = chars
@@ -55,6 +55,7 @@ class Sudoku_Generator:
         return (final_puzzle, answer)
 
 
+    # prints out the puzzle in an easy to read format
     def print_puzzle(self, puzzle: list):
 
         for row in puzzle:
@@ -68,9 +69,9 @@ class Sudoku_Generator:
         print("_" * ((self.size * 4) + 1))
 
 
-g = Sudoku_Generator([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)
-p = g.generate_puzzle()
+# g = Sudoku_Generator([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)
+# p = g.generate_puzzle()
 
-g.print_puzzle(p[0])
-print("_________________________________________")
-g.print_puzzle(p[1])
+# g.print_puzzle(p[0])
+# print("_________________________________________")
+# g.print_puzzle(p[1])

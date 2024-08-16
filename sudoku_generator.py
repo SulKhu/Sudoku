@@ -35,7 +35,8 @@ class SudokuGenerator:
         # replace desired amount of cells with value None
         # num replaced will depend on the difficulty desired
         # formula to determine num replaced: size * difficulty * 1.375
-        desired_empty = (self.size * self.difficulty * 1.375) // 1
+        desired_empty = ((0.17 * (self.size * self.size)) * self.difficulty) // 1
+
         curr_empty = 0
         empty_cells = set()
         final_puzzle = deepcopy(answer)

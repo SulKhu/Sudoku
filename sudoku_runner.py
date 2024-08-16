@@ -4,15 +4,15 @@ from sudoku_generator import SudokuGenerator
 class SudokuRunner:
 
     def __init__(self):
+        self.possible_sizes = [3, 4, 9, 16]
+
         self.possible_chars = [ 1, 2, 3, 4, 5, 6, 7, 8, 9,
                                'A', 'B', 'C', 'D', 'E', 'F',
-                               'G', 'H', 'I', 'J', 'K', 'L',
-                               'M', 'N', 'O', 'P', 'Q', 'R',
-                               'S', 'T', 'U', 'V', 'W', 'X',
-                               'Y', 'Z']
+                               'G', 'H']
     
     def run_game(self):
-        print("Size of the puzzle is the length of one row. Default size is 9. Min size is 3 and max size is 36.")
+        print("Size of the puzzle is the length of one row. Default size is 9.")
+        print("Possible sizes: 3, 4, 9, 16")
         char_size = input("Enter the desired size of the puzzle: ")
 
         try:
@@ -21,11 +21,8 @@ class SudokuRunner:
         except:
             char_size = 9
 
-        if char_size < 3:
-            char_size = 3.
-
-        if char_size > 36:
-            char_size = 36
+        if char_size not in self.possible_sizes:
+            char_size = 9
 
         print("Puzzle size will be " + str(char_size))
 

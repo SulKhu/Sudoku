@@ -1,4 +1,5 @@
 from sudoku_generator import SudokuGenerator
+from math import sqrt
 
 
 class SudokuRunner:
@@ -53,28 +54,45 @@ class SudokuRunner:
 
         chars = self.possible_chars[0: char_size]
 
-        generator = SudokuGenerator(chars, difficulty)
+        self.generator = SudokuGenerator(chars, difficulty)
 
-        puzzles = generator.generate_puzzle()
+        puzzles = self.generator.generate_puzzle()
 
         unsolved_puzzle = puzzles[0]
 
-        generator.print_puzzle(unsolved_puzzle)
+        SudokuGenerator.print_puzzle(self.size, unsolved_puzzle)
 
-        return puzzles
-
-    def run_game(self):
-        puzzles = self.start_game()
         print("To check answer, copy paste the puzzle into a app like notebook and paste in the completed or partially completed puzzle")
-        print("To see solution, type 'key'")
+        print("To see solution, type 'solution'")
+        print("To give up, type 'end'")
 
         print("Enter the your solution here: ")
 
+
+        return puzzles
+
+    def run_game(self, first_time = True):
+
+        if first_time:
+            self.puzzles = self.start_game()
+
         player_solution = []
 
-        for i in range((self.size * 3) + 1):
+        print("Enter solution here: ")
+        for i in range((self.size * 2) + 1):
+            
             curr_line = input()
-            if curr_line[0] == "_" or curr_line[0] == " ":
+
+            if curr_line == "end":
+                print("Game Over.")
+                return
+            
+            if curr_line == "solution":
+                SudokuGenerator.print_puzzle(self.size, self.puzzles[1])
+                print("Game Over.")
+                return
+
+            if curr_line[0] == "-" or curr_line[0] == " ":
                 continue
 
             proper_vals = []
@@ -95,7 +113,45 @@ class SudokuRunner:
                 curr_index += 1
             player_solution.append(proper_vals)
 
-        print(player_solution)
+        print("-------------------------------------------------------------------------")
+        finished = self.check_solution(player_solution, self.puzzles[1])
+
+        if finished:
+            print("You did it!")
+            return
+    
+        else:
+            self.run_game(False)
+
+        #print(player_solution)
+
+    def check_solution(self, attempt, key):
+        num_correct = 0
+        curr_row = -1
+        for row in attempt:
+            if len(row) == 0:
+                continue
+            curr_row += 1
+            curr_col = 0
+            for val in row:
+                if val == None:
+                    curr_col += 1
+                    continue
+                else:
+                    if val == key[curr_row][curr_col]:
+                        attempt[curr_row][curr_col] = "\033[32m" + str(val)
+                        curr_col += 1
+                        num_correct += 1
+                        continue
+
+                    else:
+                        attempt[curr_row][curr_col] = "\033[31m" + str(val)
+                        curr_col += 1
+        
+        SudokuGenerator.print_puzzle(self.size, attempt)
+
+        return (num_correct == self.size * self.size)
+
 
 r = SudokuRunner()
 r.run_game()

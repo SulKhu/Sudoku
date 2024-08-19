@@ -57,17 +57,28 @@ class SudokuGenerator:
 
 
     # prints out the puzzle in an easy to read format
-    def print_puzzle(self, puzzle: list):
+    @staticmethod
+    def print_puzzle(size, puzzle: list):
 
         for row in puzzle:
-            print("_" * ((self.size * 4) + 1))
-            print(" " * ((self.size * 4) + 1))
+            print("\033[37m-" * ((size * 4) + 1))
+
+            #for i in range(self.size):
+            #    print("|   ", end="")
+            #print("|")
             for val in row:
-                print("| " + str(val) + " ", end="")
+                if val == None:
+                    print("\033[37m|   ", end="")
+                
+                else:
+                    print("\033[37m| ", end="")
+                    print(val, end="")
+                    print(" ", end="")
+                    #print("| " + str(val) + " ", end="")
 
-            print("|")
+            print("\033[37m|")
 
-        print("_" * ((self.size * 4) + 1))
+        print("\033[37m-" * ((size * 4) + 1))
 
 
 # g = Sudoku_Generator([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)

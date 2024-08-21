@@ -4,7 +4,7 @@ from typing import List
 from math import sqrt
 from copy import deepcopy
 import random
-from sudoku_solver import SudokuSolver
+from src.sudoku.sudoku_solver import SudokuSolver
 
 class SudokuGenerator:
 

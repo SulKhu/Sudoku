@@ -1,5 +1,5 @@
 from unittest import TestCase
-from sudoku_solver import SudokuSolver
+from src.sudoku.sudoku_solver import SudokuSolver
 import cProfile, pstats, io
 from pstats import SortKey
 

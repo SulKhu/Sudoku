@@ -1,4 +1,4 @@
-from sudoku_generator import SudokuGenerator
+from src.sudoku.sudoku_generator import SudokuGenerator
 from math import sqrt
 
 

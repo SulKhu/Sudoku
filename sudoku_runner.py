@@ -82,15 +82,18 @@ class SudokuRunner:
         for i in range((self.size * 2) + 1):
             
             curr_line = input()
-
             if curr_line == "end":
                 print("Game Over.")
-                return
+                quit()
             
             if curr_line == "solution":
                 SudokuGenerator.print_puzzle(self.size, self.puzzles[1])
                 print("Game Over.")
-                return
+                quit()
+            
+            if len(curr_line) != (self.size * 4) + 1:
+                print("INVALID INPUT\n")
+                self.run_game(False)
 
             if curr_line[0] == "-" or curr_line[0] == " ":
                 continue
@@ -98,7 +101,6 @@ class SudokuRunner:
             proper_vals = []
             curr_index = 0
             for char in curr_line:
-                
                 try:
                     if curr_line[curr_index: curr_index + 3] == '   ':
                         proper_vals.append(None)
@@ -118,7 +120,7 @@ class SudokuRunner:
 
         if finished:
             print("You did it!")
-            return
+            quit()
     
         else:
             self.run_game(False)
@@ -146,7 +148,6 @@ class SudokuRunner:
 
                     else:
                         attempt[curr_row][curr_col] = "\033[31m" + str(val)
-                        curr_col += 1
         
         SudokuGenerator.print_puzzle(self.size, attempt)
 

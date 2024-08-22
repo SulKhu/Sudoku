@@ -20,3 +20,6 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/SulKhu/Sudoku"
 Issues = "https://github.com/SulKhu/Sudoku/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/foo"]

@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "sudoku_runner"
+name = "console_sudoku"
 version = "0.0.1"
 authors = [
   { name="Sulaimaan Khurrum", email="sul.khu@gmail.com" },

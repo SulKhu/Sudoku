@@ -4,7 +4,7 @@ from typing import List
 from math import sqrt
 from copy import deepcopy
 import random
-from sudoku_solver import SudokuSolver
+from console_sudoku import sudoku_solver
 
 class SudokuGenerator:
 
@@ -29,7 +29,7 @@ class SudokuGenerator:
         temp_puzzle[n] = row_n
 
         # generate the full puzzle
-        Answer_Generator: SudokuSolver = SudokuSolver(self.possible_chars)
+        Answer_Generator: sudoku_solver.SudokuSolver = sudoku_solver.SudokuSolver(self.possible_chars)
         answer = Answer_Generator.solve(temp_puzzle)
 
         # replace desired amount of cells with value None
@@ -81,9 +81,3 @@ class SudokuGenerator:
         print("\033[37m-" * ((size * 4) + 1))
 
 
-# g = Sudoku_Generator([1, 2, 3, 4, 5, 6, 7, 8, 9], 3)
-# p = g.generate_puzzle()
-
-# g.print_puzzle(p[0])
-# print("_________________________________________")
-# g.print_puzzle(p[1])

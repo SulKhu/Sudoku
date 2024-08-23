@@ -4,11 +4,11 @@ build-backend = "hatchling.build"
 
 [project]
 name = "console_sudoku"
-version = "0.0.4"
+version = "0.1.0"
 authors = [
   { name="Sulaimaan Khurrum", email="sul.khu@gmail.com" },
-]
-description = "A small example package"
+] 
+description = "A simple command-line version of the classic game Sudoku!"
 readme = "README.md"
 requires-python = ">=3.8"
 classifiers = [
@@ -20,6 +20,3 @@ classifiers = [
 [project.urls]
 Homepage = "https://github.com/SulKhu/Sudoku"
 Issues = "https://github.com/SulKhu/Sudoku/issues"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/foo"]

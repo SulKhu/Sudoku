@@ -1,3 +1,4 @@
+from console_sudoku import sudoku_generator
 from sudoku_generator import SudokuGenerator
 from math import sqrt
 
